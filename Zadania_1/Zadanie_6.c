@@ -115,7 +115,7 @@ int main()
             printf("\n");
 
             int result = show_result(p1, p2);
-            rounds_info[i][3] = result;
+            rounds_info[i][2] = result;
             switch (result) {
             case 1:
                 p1_score++;
