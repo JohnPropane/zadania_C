@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
 int str_to_int(char str[]){
     char numsStr[10][6] = {"zero","one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
@@ -30,8 +31,8 @@ int find_first_number(char str[]) {
         strncpy(newStr, &str[0], i);
         newStr[i] = '\0';
         if(isdigit(newStr[i-1])){
-                return newStr[i-1] - '0';
-            }
+            return newStr[i-1] - '0';
+        }
         for(int j = 0; j < 10; j++){
             char* result = strstr(newStr, numsStr[j]);
             if(result != NULL){
@@ -49,8 +50,8 @@ int find_last_number(char str[]) {
         strncpy(newStr, &str[0], i);
         newStr[i] = '\0';
         if(isdigit(newStr[i-1])){
-                return newStr[i-1] - '0';
-            }
+            return newStr[i-1] - '0';
+        }
         for(int j = 0; j < 10; j++){
             char* result = strstr(newStr, numsStr[j]);
             if(result != NULL){
@@ -68,6 +69,10 @@ int main()
 
     FILE* fptr;
     fptr = fopen("input.txt", "r");
+    if(fptr == NULL){
+        printf("Nie mozna odczytac pliku");
+        return 1;
+    }
 
     char myString[100];
     int counter = 1;
